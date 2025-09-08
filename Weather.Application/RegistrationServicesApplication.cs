@@ -5,10 +5,12 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather.Application.UseCases.Weather.APIQueries.GetForecastWeather;
 using Weather.Application.UseCases.Weather.Queries.GetCurrentWeather;
 using Weather.Application.Utilities.Mediator;
 using WeatherApp.WeatherbitAPI.APIConsumption;
 using WeatherApp.WeatherbitAPI.Contracts;
+using WeatherApp.WeatherbitAPI.Entities;
 
 namespace Weather.Application
 {
@@ -20,6 +22,9 @@ namespace Weather.Application
 
             service.AddScoped<IRequestHandler<QueryGetCurrentWeather, WeatherDetailDTO>,
                                         UseCaseGetWeather>();
+
+            service.AddScoped<IRequestHandler<QueryGetForecastWeather, List<WeatherForecastDTO>>,
+                UseCaseWeatherForecast>();
 
             return service;
         }

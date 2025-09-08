@@ -13,14 +13,12 @@ namespace Weather.Application.UseCases.Weather.Queries.GetCurrentWeather
         {
             
         }
-        public QueryGetCurrentWeather(string path, string city, string key)
+        public QueryGetCurrentWeather(string city, string key)
         {
-            this.path = path;
             this.city = city;
             this.key = key;
         }
 
-        public string path { get; set; }
         public string city {  get; set; }
         public string key { get; set; }
     }

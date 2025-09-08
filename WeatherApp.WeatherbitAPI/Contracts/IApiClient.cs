@@ -12,6 +12,5 @@ namespace WeatherApp.WeatherbitAPI.Contracts
     public interface IApiClient
     {
         public Task<String> GetWeatherAsync(RequestUrlCurrentWeather query);
-        public Task<String> GetWeekWeatherAsync();
     }
 }
