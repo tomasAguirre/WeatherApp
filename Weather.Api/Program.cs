@@ -1,6 +1,7 @@
 using Weather.Application;
 using WeatherApp.Domain;
 using WeatherApp.WeatherbitAPI;
+using WeatherApp.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddPersistenceServicesRegistry();
 builder.Services.addApplicationServicesWeatherbitApi();
 builder.Services.addApplicationServicesApplication();
 

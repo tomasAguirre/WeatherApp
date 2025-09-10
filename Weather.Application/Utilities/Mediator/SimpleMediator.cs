@@ -30,5 +30,22 @@ namespace Weather.Application.Utilities.Mediator
 
             return await (Task<TResponse>)method.Invoke(UseCase, new object[] { request });
         }
+
+
+        public async Task Send(IRequest request)
+        {
+            var UseCaseType = typeof(IRequestHandler<>)
+    .MakeGenericType(request.GetType());
+
+            var UseCase = this.serviceProvider.GetService(UseCaseType);
+
+            if (UseCase == null)
+            {
+                throw new MediatorException($"No handler found for {request.GetType().Name}");
+            }
+            var method = UseCaseType.GetMethod("Handle");
+
+            await (Task) method.Invoke(UseCase, new object[] { request });
+        }
     }
 }

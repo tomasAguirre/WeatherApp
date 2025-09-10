@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Weather.Application.Utilities.Mediator
+namespace Weather.Application.Contracts.Persistence
 {
-    public interface IRequest<TResponse>
+    public interface IUnitOfWork
     {
-
-    }
-
-    public interface IRequest
-    {
+        Task Persist();
+        Task Reverse();
     }
 }

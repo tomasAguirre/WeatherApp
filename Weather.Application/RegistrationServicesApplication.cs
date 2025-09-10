@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weather.Application.UseCases.Weather.APIQueries.GetForecastWeather;
+using Weather.Application.UseCases.Weather.PersistenceCommands.CreateWeather;
+using Weather.Application.UseCases.Weather.PersistenceCommands.CreateWeatherForecast;
 using Weather.Application.UseCases.Weather.Queries.GetCurrentWeather;
 using Weather.Application.Utilities.Mediator;
 using WeatherApp.WeatherbitAPI.APIConsumption;
@@ -25,6 +27,11 @@ namespace Weather.Application
 
             service.AddScoped<IRequestHandler<QueryGetForecastWeather, List<WeatherForecastDTO>>,
                 UseCaseWeatherForecast>();
+
+
+            service.AddScoped<IRequestHandler<CreateWeatherCommand, Guid>, UseCaseSaveWeatherDatabase>();
+
+            service.AddScoped<IRequestHandler<CreateWeatherForecastCommand>, UseCaseSaveWeatherForecastDatabase>();
 
             return service;
         }
