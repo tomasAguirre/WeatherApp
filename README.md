@@ -7,6 +7,8 @@ Current weather
 7-day daily forecast lookup by city
 
 Data persistence in SQL Server
+        Add-Migration [MigrationName]
+        Update-Database
 
 External API consumption (Weatherbit)
 
@@ -47,7 +49,7 @@ Project Configuration
 
 appsettings.json
 
-Código
+Code
 {
   "ConnectionStrings": {
     "WeatherAppConectionString": "your-connection-string"
