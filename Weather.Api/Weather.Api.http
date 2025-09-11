@@ -1,6 +1,6 @@
 @Weather.Api_HostAddress = http://localhost:5163/api/weather
 
-GET {{Weather.Api_HostAddress}}
+GET {{Weather.Api_HostAddress}}/GetWeather
 Accept: application/json
 
 ###
