@@ -34,6 +34,8 @@ namespace Weather.Api.Controllers
             if (!_cache.TryGetValue(cacheKey, out WeatherDetailDTO result))
             {
                 result = await this.mediator.Send(query);
+                var SqlQuery = new CreateWeatherCommand(result.min_temp, result.max_temp, DateTime.Parse(result.datetime), result.description);
+                await this.mediator.Send(SqlQuery);
 
                 var options = new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(TimeSpan.FromMinutes(10));
@@ -41,28 +43,26 @@ namespace Weather.Api.Controllers
                 // save the cache object
                 _cache.Set(cacheKey, result, options);
             }
-                var SqlQuery = new CreateWeatherCommand(result.min_temp, result.max_temp, DateTime.Parse(result.datetime), result.description);
-                await this.mediator.Send(SqlQuery);
             return result;
         }
 
         [HttpGet("forecast")]
-        public async Task<ActionResult<List<WeatherForecastDTO>>> GetWeatherForecast() 
+        public async Task<ActionResult<List<WeatherForecastDTO>>> GetWeatherForecast([FromQuery] string city) 
         {
             var query = new QueryGetForecastWeather();
-            String cacheKey = "ListOfWeather";
-            query.city = "San Salvador";
+            query.city = string.IsNullOrEmpty(city) ?  "San Salvador" : city;
+            String cacheKey = query.city;
             if (!_cache.TryGetValue(cacheKey, out List<WeatherForecastDTO> result))
             {
                 result = await this.mediator.Send(query);
+                var SqlQuery = new CreateWeatherForecastCommand(result);
+                await this.mediator.Send(SqlQuery);
 
                 var options = new MemoryCacheEntryOptions()
                         .SetAbsoluteExpiration(TimeSpan.FromMinutes(10));
 
                 _cache.Set(cacheKey, result, options);
             }
-            var SqlQuery = new CreateWeatherForecastCommand(result);
-            await this.mediator.Send(SqlQuery);
             return result;
         }
     }

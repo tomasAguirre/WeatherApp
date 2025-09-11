@@ -15,11 +15,41 @@ builder.Services.AddPersistenceServicesRegistry();
 builder.Services.addApplicationServicesWeatherbitApi();
 builder.Services.addApplicationServicesApplication();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowFrontend", policy =>
+        {
+            policy.WithOrigins("https://localhost:7245") 
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+    });
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-app.UseHttpsRedirection();
+
+if (!builder.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
+if (builder.Environment.IsDevelopment())
+{
+    app.UseCors("AllowFrontend");
+
+    app.MapGet("/", context =>
+    {
+        context.Response.Redirect("/index.html");
+        return Task.CompletedTask;
+    });
+}
+   
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

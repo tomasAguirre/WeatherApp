@@ -4,5 +4,5 @@ GET {{Weather.Api_HostAddress}}/GetWeather
 Accept: application/json
 
 ###
-GET {{Weather.Api_HostAddress}}/forecast
+GET {{Weather.Api_HostAddress}}/forecast?city=San%20Salvador
 Accept: application/json

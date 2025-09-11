@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima Actual y Pronóstico</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🌦️ Información del Clima</h1>
+    </header>
+
+    <main>
+        <section id="current-weather">
+            <h2>Clima Actual</h2>
+            <div class="weather-card" id="weather-detail">
+                <p>Cargando datos...</p>
+            </div>
+        </section>
+
+        <section id="forecast">
+            <h2>Pronóstico</h2>
+            <div id="forecast-list">
+                <p>Cargando pronóstico...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Datos obtenidos desde API local</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
