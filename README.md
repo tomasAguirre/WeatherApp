@@ -2,9 +2,9 @@ WeatherApp is a web application that allows users to check the current weather a
 
 Main Features
 
-Current weather lookup by city
+Current weather 
 
-7-day daily forecast
+7-day daily forecast lookup by city
 
 Data persistence in SQL Server
 
@@ -12,9 +12,11 @@ External API consumption (Weatherbit)
 
 Automatic retries with resilience policy
 
+Cache
+
 Responsive web interface with city selector
 
-Current Weather GET /api/weather/GetWeather?city={cityName}
+Current Weather GET /api/weather/GetWeather
 
 Example response:
 
@@ -76,7 +78,7 @@ Testing with api.http
 
 Code
 ### Current Weather
-GET http://localhost:5163/api/weather/GetWeather?city=San%20Salvador
+GET http://localhost:5163/api/weather/GetWeather
 Accept: application/json
 
 ### Forecast
