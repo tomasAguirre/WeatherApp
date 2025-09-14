@@ -23,7 +23,6 @@ public class UseCaseWeatherForecastTest
             {"APIConfiguration:key", "ba6ada3fc90f4f8694cc0e3a4884a8c3"}
         };
 
-        // Instancia tu clase mock con los valores
         var mockConfig = new MockConfiguration(settings);
 
         useCase = new UseCaseWeatherForecast(ApiClient, mockConfig);
