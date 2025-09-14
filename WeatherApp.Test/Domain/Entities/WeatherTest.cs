@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Domain.Entities;
+using WeatherApp.WeatherbitAPI.Entities;
 
 namespace WeatherApp.Test.Domain.Entities
 {
@@ -13,7 +14,7 @@ namespace WeatherApp.Test.Domain.Entities
         [TestMethod]
         public void CreateEntity_AllCorrect() 
         {
-            var weather = new Weather(max_temp: 31.1, min_temp: 23, datetime: DateTime.Today, description: "Moderate rain");
+            var weather = new WeatherApp.Domain.Entities.Weather(max_temp: 31.1, min_temp: 23, datetime: DateTime.Today, description: "Moderate rain");
             Assert.IsNotNull(weather);
             Assert.IsNotNull(weather.Id);
             Assert.AreEqual(weather.max_temp, 31.1);
