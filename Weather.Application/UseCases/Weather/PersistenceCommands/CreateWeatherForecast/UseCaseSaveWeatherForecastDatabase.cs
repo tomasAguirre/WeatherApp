@@ -26,11 +26,8 @@ namespace Weather.Application.UseCases.Weather.PersistenceCommands.CreateWeather
                 var weather = new WeatherApp.Domain.Entities.Weather(w.min_temp, w.max_temp, DateTime.Parse(w.datetime), w.description);
                 try
                 {
-                    bool weatherAlreadyExist = await repositoryWeather.checkIfAlreadyExists(weather.datetime);
-                    if (!weatherAlreadyExist)
-                    {
                         await repositoryWeather.save(weather);
-                    }
+
                 }
                 catch (Exception ex)
                 {
