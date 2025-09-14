@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WeatherApp.Persistence/Migrations/20250911163648_my-migration.cs
+/WeatherApp.Persistence/Migrations/20250911163648_my-migration.Designer.cs
