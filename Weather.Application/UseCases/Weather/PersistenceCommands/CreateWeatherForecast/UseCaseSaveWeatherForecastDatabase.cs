@@ -9,7 +9,7 @@ using Weather.Application.Utilities.Mediator;
 
 namespace Weather.Application.UseCases.Weather.PersistenceCommands.CreateWeatherForecast
 {
-    internal class UseCaseSaveWeatherForecastDatabase : IRequestHandler<CreateWeatherForecastCommand>
+    public class UseCaseSaveWeatherForecastDatabase : IRequestHandler<CreateWeatherForecastCommand>
     {
         private readonly IRepositoryWeather repositoryWeather;
         public IUnitOfWork UnitOfWork;
